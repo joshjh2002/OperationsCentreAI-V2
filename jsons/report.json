@@ -1,0 +1,30 @@
+{
+  "embed": {
+    "title": "Create a Support Ticket",
+    "description": "React with the relevant emoji to create a ticket and get in contact with the appropriate team!",
+    "color": 12743972,
+    "fields": [
+      {
+        "name": "<:discord_logo:947544355533652048>",
+        "value": "Report an issue with the\nDiscord server",
+        "inline": true
+      },
+      {
+        "name": "<:ConanExiles:884739183543988284>",
+        "value": "Report an issue with the\nConan server",
+        "inline": true
+      },
+
+      {
+        "name": "<:Rust:721800980147994656>",
+        "value": "Report an issue with the\nRust server",
+        "inline": true
+      },
+      {
+        "name": "☑️",
+        "value": "Report a different issue",
+        "inline": false
+      }
+    ]
+  }
+}
