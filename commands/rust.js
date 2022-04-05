@@ -3,8 +3,6 @@ module.exports = {
   description: "sends rust embed",
   execute(message, args, Discord) {
     if (
-      message.member.roles.cache.has("651471450695270423") ||
-      message.member.roles.cache.has("754810662001311816") ||
       message.member.roles.cache.has("697047262081056828") ||
       message.member.roles.cache.has("651471748214030408")
     ) {

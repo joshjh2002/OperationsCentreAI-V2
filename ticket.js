@@ -10,6 +10,16 @@ module.exports = {
         parent: process.env.DC_TICKETS_CATEGORY, //This is the category it is in
         permissionOverwrites: [
           {
+            id: "697047262081056828", //To make it be seen by a certain role, user an ID instead
+            allow: ["VIEW_CHANNEL", "SEND_MESSAGES", "READ_MESSAGE_HISTORY"], //Allow permissions
+            deny: [], //Deny permissions
+          },
+          {
+            id: "651471748214030408", //To make it be seen by a certain role, user an ID instead
+            allow: ["VIEW_CHANNEL", "SEND_MESSAGES", "READ_MESSAGE_HISTORY"], //Allow permissions
+            deny: [], //Deny permissions
+          },
+          {
             id: user.id, //To make it be seen by a certain role, user an ID instead
             allow: ["VIEW_CHANNEL", "SEND_MESSAGES", "READ_MESSAGE_HISTORY"], //Allow permissions
             deny: [], //Deny permissions
@@ -43,7 +53,12 @@ module.exports = {
     let admin_role = "";
     console.log(reaction.emoji.name);
     if (reaction.emoji.name === "ConanExiles") {
-      admin_role = "<@&" + process.env.DC_CONAN_ROLE + ">";
+      admin_role =
+        "<@&" +
+        process.env.DC_CONAN_ROLE +
+        "><@&" +
+        process.env.DC_CONAN_ROLE_MOD +
+        ">";
       this.CreateChannel(reaction, user, admin_role, client);
     } else if (reaction.emoji.name === "discord_logo") {
       admin_role = "<@&" + process.env.DC_DISCORD_ROLE + ">";
