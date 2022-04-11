@@ -36,7 +36,6 @@ client.on("messageReactionAdd", (reaction, user) => {
 });
 const ships = ["Star Fighter", "Cruiser", "Ship"];
 client.on("guildMemberAdd", (member) => {
-  sleep(100);
   let num = Math.floor(Math.random() * 30) + 1;
   let rnd = Math.floor(Math.random() * ships.length);
 
@@ -56,9 +55,3 @@ client.on("guildMemberAdd", (member) => {
 });
 
 client.login(process.env.DC_TOKEN);
-
-function sleep(ms) {
-  return new Promise((resolve) => {
-    setTimeout(resolve, ms);
-  });
-}
