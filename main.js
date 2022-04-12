@@ -49,7 +49,7 @@ client.on("guildMemberAdd", async (member) => {
         ships[rnd] +
         " in the Operations Centre air bay " +
         num +
-        "\n\nThere are now currently " +
+        ".\n\nThere are now currently " +
         client.guilds.cache.get("651455552517570586").memberCount +
         " people on board."
     );
