@@ -2,8 +2,17 @@ require("dotenv").config();
 const tools = require("./tools");
 const reactionroles = require("./reactionroles");
 
-const Discord = require("discord.js");
-const client = new Discord.Client({
+const { REST } = require("@discordjs/rest");
+const { Routes } = require("discord-api-types/v9");
+
+const {
+  Intents,
+  Client,
+  Collection,
+  CommandInteractionOptionResolver,
+  Interaction,
+} = require("discord.js");
+const client = new Client({
   intents: [
     "GUILDS",
     "GUILD_MESSAGES",
@@ -15,14 +24,55 @@ const client = new Discord.Client({
 const fs = require("fs");
 
 const prefix = "-";
-client.command = new Discord.Collection();
-
-tools.LoadCommands(fs, client);
+client.commands = new Collection();
+let commands = tools.LoadCommands(fs, client);
 
 //Once the bot is online
 client.once("ready", () => {
   console.log("Operations Centre AI: Online!");
   tools.ready(client);
+  const CLIENT_ID = client.user.id;
+
+  const rest = new REST({
+    version: "9",
+  }).setToken(process.env.DC_TOKEN);
+
+  (async () => {
+    try {
+      if (process.env.ENV === "production") {
+        await rest.put(Routes.applicationCommands(CLIENT_ID), {
+          body: commands,
+        });
+        console.log("Commands Registered Globally");
+      } else {
+        await rest.put(
+          Routes.applicationGuildCommands(CLIENT_ID, process.env.DC_GUILD_ID),
+          {
+            body: commands,
+          }
+        );
+        console.log("Commands Registered Locally");
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  })();
+});
+
+client.on("interactionCreate", async (interaction) => {
+  if (!interaction.isCommand()) return;
+
+  const command = client.commands.get(interaction.commandName);
+
+  try {
+    await command.execute(interaction);
+  } catch (err) {
+    interaction.reply({
+      content: "An error occurred using this command",
+      ephemeral: true,
+    });
+    console.error(err);
+  }
 });
 
 //When someone sends a message, this will execute
@@ -34,6 +84,7 @@ client.on("messageCreate", (message) => {
 client.on("messageReactionAdd", (reaction, user) => {
   tools.messageReaction(reaction, user, client);
 });
+
 const ships = ["Star Fighter", "Cruiser", "Ship"];
 client.on("guildMemberAdd", async (member) => {
   await sleep(500);

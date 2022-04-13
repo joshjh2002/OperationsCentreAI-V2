@@ -6,10 +6,13 @@ module.exports = {
       .readdirSync("./commands/")
       .filter((file) => file.endsWith(".js"));
 
+    let commands = [];
     for (const file of commandFiles) {
       const command = require(`./commands/${file}`);
-      client.command.set(command.name, command);
+      commands.push(command.data.toJSON());
+      client.commands.set(command.data.name, command);
     }
+    return commands;
   },
 
   ready: function (client) {
@@ -30,7 +33,7 @@ module.exports = {
       const command = args.shift().toLowerCase();
 
       //execute command and pass in needed information
-      client.command.get(command).execute(message, args, Discord, client);
+      client.commands.get(command).execute(message, args, Discord, client);
     } catch (error) {
       message.channel.send(
         "This command was not recognised. Please try again!"
