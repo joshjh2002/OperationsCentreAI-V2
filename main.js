@@ -5,13 +5,7 @@ const reactionroles = require("./reactionroles");
 const { REST } = require("@discordjs/rest");
 const { Routes } = require("discord-api-types/v9");
 
-const {
-  Intents,
-  Client,
-  Collection,
-  CommandInteractionOptionResolver,
-  Interaction,
-} = require("discord.js");
+const { Intents, Client, Collection } = require("discord.js");
 const client = new Client({
   intents: [
     "GUILDS",
@@ -27,10 +21,34 @@ const prefix = "-";
 client.commands = new Collection();
 let commands = tools.LoadCommands(fs, client);
 
+const DELETE = false;
+if (DELETE) {
+  const rest = new REST({ version: "9" }).setToken(process.env.DC_TOKEN);
+  rest
+    .get(
+      Routes.applicationGuildCommands(
+        process.env.CLIENT_ID,
+        process.env.DC_GUILD_ID
+      )
+    )
+    .then((data) => {
+      const promises = [];
+      for (const command of data) {
+        const deleteUrl = `${Routes.applicationGuildCommands(
+          process.env.CLIENT_ID,
+          process.env.DC_GUILD_ID
+        )}/${command.id}`;
+        promises.push(rest.delete(deleteUrl));
+      }
+      return Promise.all(promises);
+    });
+}
+
 //Once the bot is online
 client.once("ready", () => {
   console.log("Operations Centre AI: Online!");
   tools.ready(client);
+
   const CLIENT_ID = client.user.id;
 
   const rest = new REST({
@@ -77,7 +95,7 @@ client.on("interactionCreate", async (interaction) => {
 
 //When someone sends a message, this will execute
 client.on("messageCreate", (message) => {
-  tools.messageCommand(prefix, message, Discord, client);
+  //tools.messageCommand(prefix, message, Discord, client);
 });
 
 //when a user reacts to a message

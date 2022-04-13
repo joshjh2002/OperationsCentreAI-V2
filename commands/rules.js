@@ -1,10 +1,13 @@
+const { SlashCommandBuilder } = require("@discordjs/builders");
+
 module.exports = {
-  name: "rules",
-  description: "sends rules embed",
-  execute(message, args, Discord) {
+  data: new SlashCommandBuilder()
+    .setName("rules")
+    .setDescription("Sends Rules Embed"),
+  async execute(interaction) {
     if (
-      message.member.roles.cache.has("697047262081056828") ||
-      message.member.roles.cache.has("651471748214030408")
+      interaction.member.roles.cache.has(process.env.DC_ADMIN_ROLE) ||
+      interaction.member.roles.cache.has(process.env.DC_MOD_ROLE)
     ) {
       const embed = {
         title: "RULES",
@@ -66,12 +69,12 @@ module.exports = {
           },
         ],
       };
-
-      message.channel.send({ embeds: [embed] });
+      interaction.reply({ embeds: [embed] });
     } else {
-      message.channel.send(
-        "You do not have the right permissions to use this command."
-      );
+      interaction.reply({
+        content: "You do not have permission to use this command.",
+        ephemeral: true,
+      });
     }
   },
 };

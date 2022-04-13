@@ -1,10 +1,13 @@
+const { SlashCommandBuilder } = require("@discordjs/builders");
+
 module.exports = {
-  name: "report",
-  description: "allows a user to send an error report",
-  async execute(message, args, Discord) {
+  data: new SlashCommandBuilder()
+    .setName("report")
+    .setDescription("Sends Ticket Embed"),
+  async execute(interaction) {
     if (
-      message.member.roles.cache.has("697047262081056828") ||
-      message.member.roles.cache.has("651471748214030408")
+      interaction.member.roles.cache.has(process.env.DC_ADMIN_ROLE) ||
+      interaction.member.roles.cache.has(process.env.DC_MOD_ROLE)
     ) {
       const embed = {
         title: "Create a Support Ticket",
@@ -34,15 +37,16 @@ module.exports = {
           },
         ],
       };
-      let msg = await message.channel.send({ embeds: [embed] });
+      let msg = await interaction.reply({ embeds: [embed], fetchReply: true });
       msg.react("<:discord_logo:947544355533652048>");
       msg.react("<:ConanExiles:884739183543988284>");
       msg.react("<:Rust:721800980147994656>");
       msg.react("☑");
     } else {
-      message.channel.send(
-        "You do not have the right permissions to use this command."
-      );
+      interaction.reply({
+        content: "You do not have permission to use this command.",
+        ephemeral: true,
+      });
     }
   },
 };
