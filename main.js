@@ -83,7 +83,7 @@ client.on("interactionCreate", async (interaction) => {
   const command = client.commands.get(interaction.commandName);
 
   try {
-    await command.execute(interaction);
+    await command.execute(interaction, client);
   } catch (err) {
     interaction.reply({
       content: "An error occurred using this command",

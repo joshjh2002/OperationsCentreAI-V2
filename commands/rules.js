@@ -4,7 +4,7 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName("rules")
     .setDescription("Sends Rules Embed"),
-  async execute(interaction) {
+  async execute(interaction, client) {
     if (
       interaction.member.roles.cache.has(process.env.DC_ADMIN_ROLE) ||
       interaction.member.roles.cache.has(process.env.DC_MOD_ROLE)

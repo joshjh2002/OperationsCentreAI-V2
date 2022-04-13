@@ -3,11 +3,18 @@ const { SlashCommandBuilder } = require("@discordjs/builders");
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("conan")
-    .setDescription("Sends Conan Embed"),
-  async execute(interaction) {
+    .setDescription("Sends Conan Embed and Link")
+    .addBooleanOption((option) =>
+      option
+        .setName("link")
+        .setDescription("Do you want the link?")
+        .setRequired(false)
+    ),
+  async execute(interaction, client) {
     if (
-      interaction.member.roles.cache.has(process.env.DC_ADMIN_ROLE) ||
-      interaction.member.roles.cache.has(process.env.DC_MOD_ROLE)
+      (interaction.member.roles.cache.has(process.env.DC_ADMIN_ROLE) ||
+        interaction.member.roles.cache.has(process.env.DC_MOD_ROLE)) &&
+      interaction.options.getBoolean("link") != true
     ) {
       const embed = {
         title: "Operation Exiles",
@@ -46,16 +53,36 @@ module.exports = {
           {
             name: "Shortcut:",
             value:
-              "You can get a join link to the server by typing `-conanlink` into any chat. <@813799178689708104> will DM you the link!",
+              "You can get a join link to the server by typing `/conan` into any chat. <@813799178689708104> will DM you the link!",
           },
         ],
       };
       interaction.reply({ embeds: [embed] });
     } else {
-      interaction.reply({
-        content: "You do not have permission to use this command.",
-        ephemeral: true,
-      });
+      if (
+        interaction.options.getBoolean("link") ||
+        !(
+          interaction.member.roles.cache.has(process.env.DC_ADMIN_ROLE) ||
+          interaction.member.roles.cache.has(process.env.DC_MOD_ROLE)
+        )
+      ) {
+        const user = await client.users.cache.get(
+          interaction.member.user.id.toString()
+        );
+        user.send({
+          content: "https://operationscentre.github.io/community/join-conan",
+        });
+
+        interaction.reply({
+          content: "The link has been sent you. Check your DMs!",
+          ephemeral: true,
+        });
+      } else {
+        interaction.reply({
+          content: "You do not have permission to use this command.",
+          ephemeral: true,
+        });
+      }
     }
   },
 };
