@@ -51,4 +51,56 @@ module.exports = {
       ticket.CreateTicket(reaction, user, client);
     }
   },
+
+  buttonHandler: function (interaction, client) {
+    if (interaction.customId == "conan-button") {
+      if (interaction.member.roles.cache.has("884739374284152863")) {
+        interaction.reply({
+          content:
+            "You no longer have the Conan role. We're sorry to see you go.",
+          ephemeral: true,
+        });
+        interaction.member.roles.remove("884739374284152863");
+        client.channels.cache
+          .get("887374258576162816")
+          .send(
+            "<@" + interaction.member.user.id + "> has removed the Conan role."
+          );
+      } else {
+        interaction.reply({
+          content: "You have been given the Conan role.",
+          ephemeral: true,
+        });
+        interaction.member.roles.add("884739374284152863");
+        client.channels.cache
+          .get("887374258576162816")
+          .send(
+            "<@" + interaction.member.user.id + "> has got the Conan role."
+          );
+      }
+    } else if (interaction.customId == "rust-button") {
+      if (interaction.member.roles.cache.has("870978829974384660")) {
+        interaction.reply({
+          content:
+            "You no longer have the Rust role. We're sorry to see you go.",
+          ephemeral: true,
+        });
+        interaction.member.roles.remove("870978829974384660");
+        client.channels.cache
+          .get("947811153092964382")
+          .send(
+            "<@" + interaction.member.user.id + "> has removed the Rust role."
+          );
+      } else {
+        interaction.reply({
+          content: "You have been given the Rust role.",
+          ephemeral: true,
+        });
+        interaction.member.roles.add("870978829974384660");
+        client.channels.cache
+          .get("947811153092964382")
+          .send("<@" + interaction.member.user.id + "> has got the Rust role.");
+      }
+    }
+  },
 };

@@ -1,0 +1,15 @@
+{
+  "embed": {
+    "title": "Rusty Operations (Rust Server)",
+    "description": "Make sure to get this role if you play on our Rust server so that you can see the Rust channels and get pinged for server announcements and other Rusty things.",
+    "color": 13724201
+  }
+}
+
+{
+    "embed": {
+      "title": "Operation Exiles (Conan Exiles Server)",
+      "description": "Grab this role if you play on our Conan Exiles server in order to see it's related channels and show you are part of this server.",
+      "color": 3246160
+    }
+  }

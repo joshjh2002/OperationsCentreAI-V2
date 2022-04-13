@@ -1,6 +1,5 @@
 require("dotenv").config();
 const tools = require("./tools");
-const reactionroles = require("./reactionroles");
 
 const { REST } = require("@discordjs/rest");
 const { Routes } = require("discord-api-types/v9");
@@ -78,18 +77,22 @@ client.once("ready", () => {
 });
 
 client.on("interactionCreate", async (interaction) => {
-  if (!interaction.isCommand()) return;
+  if (interaction.isButton()) {
+    tools.buttonHandler(interaction, client);
+  }
 
-  const command = client.commands.get(interaction.commandName);
+  if (interaction.isCommand()) {
+    const command = client.commands.get(interaction.commandName);
 
-  try {
-    await command.execute(interaction, client);
-  } catch (err) {
-    interaction.reply({
-      content: "An error occurred using this command",
-      ephemeral: true,
-    });
-    console.error(err);
+    try {
+      await command.execute(interaction, client);
+    } catch (err) {
+      interaction.reply({
+        content: "An error occurred using this command",
+        ephemeral: true,
+      });
+      console.error(err);
+    }
   }
 });
 
