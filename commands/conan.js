@@ -77,6 +77,14 @@ module.exports = {
           content: "The link has been sent you. Check your DMs!",
           ephemeral: true,
         });
+
+        client.channels.cache
+          .get("887374258576162816")
+          .send(
+            "<@" +
+              interaction.member.user.id +
+              "> has requested the Conan Server link."
+          );
       } else {
         interaction.reply({
           content: "You do not have permission to use this command.",

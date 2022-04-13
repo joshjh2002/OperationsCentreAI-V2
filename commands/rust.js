@@ -72,6 +72,14 @@ module.exports = {
           content: "The link has been sent you. Check your DMs!",
           ephemeral: true,
         });
+
+        client.channels.cache
+          .get("947811153092964382")
+          .send(
+            "<@" +
+              interaction.member.user.id +
+              "> has requested the Rust Server link."
+          );
       } else {
         interaction.reply({
           content: "You do not have permission to use this command.",
