@@ -78,7 +78,9 @@ client.once("ready", () => {
 
 client.on("interactionCreate", async (interaction) => {
   if (interaction.isButton()) {
-    tools.buttonHandler(interaction, client);
+    try {
+      tools.buttonHandler(interaction, client);
+    } catch (err) {}
   }
 
   if (interaction.isCommand()) {
