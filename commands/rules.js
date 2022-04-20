@@ -1,4 +1,5 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
+const { MessageActionRow, MessageButton } = require("discord.js");
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -69,7 +70,15 @@ module.exports = {
           },
         ],
       };
-      interaction.reply({ embeds: [embed] });
+
+      const row = new MessageActionRow().addComponents(
+        new MessageButton()
+          .setCustomId("rules-button")
+          .setLabel("Agree to rules")
+          .setStyle("PRIMARY")
+      );
+
+      interaction.reply({ embeds: [embed], components: [row] });
     } else {
       interaction.reply({
         content: "You do not have permission to use this command.",
