@@ -99,7 +99,9 @@ module.exports = {
       let rnd = Math.floor(Math.random() * messages.length);
 
       const embed = {
-        description: messages[rnd],
+        description:
+          messages[rnd] +
+          "\nYou can use `/conan` to get a link that will automatically connect you to the server.",
         color: 16749824,
         thumbnail: {
           url: "https://operationscentre.github.io/community/img/conan-logo.png",
@@ -147,7 +149,9 @@ module.exports = {
       let rnd = Math.floor(Math.random() * messages.length);
 
       const embed = {
-        description: messages[rnd],
+        description:
+          messages[rnd] +
+          "\nYou can use `/rust` to get a link that will automatically connect you to the server.",
         color: 16749824,
         thumbnail: {
           url: "https://operationscentre.github.io/community/img/rust-logo.jpg",
