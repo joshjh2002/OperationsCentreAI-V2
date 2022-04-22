@@ -53,12 +53,7 @@ module.exports = {
     let admin_role = "";
     console.log(reaction.emoji.name);
     if (reaction.emoji.name === "ConanExiles") {
-      admin_role =
-        "<@&" +
-        process.env.DC_CONAN_ROLE +
-        "><@&" +
-        process.env.DC_CONAN_ROLE_MOD +
-        ">";
+      admin_role = "<@&" + process.env.DC_CONAN_ROLE + ">";
       this.CreateChannel(reaction, user, admin_role, client);
     } else if (reaction.emoji.name === "discord_logo") {
       admin_role = "<@&" + process.env.DC_DISCORD_ROLE + ">";
