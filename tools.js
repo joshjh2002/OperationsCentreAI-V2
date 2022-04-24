@@ -58,6 +58,8 @@ module.exports = {
       this.conan_button(interaction, client);
     } else if (interaction.customId == "rust-button") {
       this.rust_button(interaction, client);
+    } else if (interaction.customId == "farming-button") {
+      this.farming_button(interaction, client);
     } else if (interaction.customId == "rules-button") {
       interaction.member.roles.add("672053262261813248");
       interaction.reply({
@@ -164,6 +166,56 @@ module.exports = {
       };
 
       client.channels.cache.get("947813530407682068").send({
+        content: "<@" + interaction.member.user.id + ">",
+        embeds: [embed],
+      });
+    }
+  },
+
+  farming_button: function (interaction, client) {
+    if (interaction.member.roles.cache.has("967142420619862056")) {
+      interaction.reply({
+        content:
+          "You no longer have the Farming role. We're sorry to see you go.",
+        ephemeral: true,
+      });
+      interaction.member.roles.remove("967142420619862056");
+      client.channels.cache
+        .get("967142992764874772")
+        .send(
+          "<@" + interaction.member.user.id + "> has removed the Farming role."
+        );
+    } else {
+      interaction.reply({
+        content: "You have been given the Farming role.",
+        ephemeral: true,
+      });
+      interaction.member.roles.add("967142420619862056");
+      client.channels.cache
+        .get("967142992764874772")
+        .send(
+          "<@" + interaction.member.user.id + "> has got the Farming role."
+        );
+
+      let messages = [
+        "Welcome to Farming Operations! We hope you enjoy your stay!",
+        "Hello! It's great to have you here!",
+      ];
+      let rnd = Math.floor(Math.random() * messages.length);
+
+      const embed = {
+        description:
+          messages[rnd] +
+          "\nGo to <#967144306777419876> to get the information to join the server.",
+        color: 16749824,
+        author: {
+          name: "Alan",
+          icon_url:
+            "https://cdn.discordapp.com/avatars/456943422717165579/ef4f25cbc19971e9862efd04f5daa299.png?size=1024",
+        },
+      };
+
+      client.channels.cache.get("967143916249964564").send({
         content: "<@" + interaction.member.user.id + ">",
         embeds: [embed],
       });

@@ -2,27 +2,26 @@ const { SlashCommandBuilder } = require("@discordjs/builders");
 const { MessageActionRow, MessageButton } = require("discord.js");
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName("conan-role")
-    .setDescription("Displays Conan Roles Embed"),
+    .setName("farming-role")
+    .setDescription("Displays Farming Simulator Roles Embed"),
   async execute(interaction, client) {
     if (
-      (interaction.member.roles.cache.has(process.env.DC_ADMIN_ROLE) ||
-        interaction.member.roles.cache.has(process.env.DC_MOD_ROLE)) &&
-      interaction.options.getBoolean("link") != true
+      interaction.member.roles.cache.has(process.env.DC_ADMIN_ROLE) ||
+      interaction.member.roles.cache.has(process.env.DC_MOD_ROLE)
     ) {
       const row = new MessageActionRow().addComponents(
         new MessageButton()
-          .setCustomId("conan-button")
-          .setLabel("Operation Exiles")
+          .setCustomId("farming-button")
+          .setLabel("Farming Operations")
           .setStyle("PRIMARY")
-          .setEmoji("<:ConanExiles:884739183543988284>")
+          .setEmoji("<:farming:965900831629127740>")
       );
 
       const embed = {
-        title: "Operation Exiles (Conan Exiles Server)",
+        title: "Farming Operations (Farming Simulator 22 Server)",
         description:
-          "Grab this role if you play on our Conan Exiles server in order to see it's related channels and show you are part of this server.",
-        color: 14766914,
+          "Grab this role to join our amazing Farming server and to see it's related channels.",
+        color: 16731689,
       };
 
       interaction.reply({ embeds: [embed], components: [row] });
