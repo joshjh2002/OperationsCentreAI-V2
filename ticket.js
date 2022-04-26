@@ -130,7 +130,10 @@ module.exports = {
             return;
           }
           ticket_record = res;
-          channel.setName("ticket-" + ticket_record.rows[0].ticket_id);
+          ("0" + 11).slice(-2); // '11'
+          channel.setName(
+            "ticket-" + ("000000" + ticket_record.rows[0].ticket_id).slice(-6)
+          );
         });
       });
     });
