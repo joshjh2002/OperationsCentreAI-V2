@@ -180,7 +180,7 @@ module.exports = {
     } else if (reaction.emoji.name === "☑") {
       admin_role =
         "<@&" +
-        process.env.DC_DISCORD_ROLE +
+        process.env.DC_ADMIN_ROLE +
         ">" +
         " <@&" +
         process.env.DC_MOD_ROLE +
@@ -189,7 +189,7 @@ module.exports = {
         reaction,
         user,
         admin_role,
-        process.env.DC_DISCORD_ROLE,
+        process.env.DC_ADMIN_ROLE,
         client
       );
     }
