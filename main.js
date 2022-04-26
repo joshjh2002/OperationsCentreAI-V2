@@ -15,6 +15,7 @@ const client = new Client({
 });
 
 const fs = require("fs");
+const ticket = require("./ticket");
 
 const prefix = "-";
 client.commands = new Collection();
@@ -101,6 +102,7 @@ client.on("interactionCreate", async (interaction) => {
 //When someone sends a message, this will execute
 client.on("messageCreate", (message) => {
   //tools.messageCommand(prefix, message, Discord, client);
+  ticket.logMessage(message, client);
 });
 
 //when a user reacts to a message
