@@ -130,7 +130,7 @@ module.exports = {
             return;
           }
           ticket_record = res;
-          ("0" + 11).slice(-2); // '11'
+
           channel.setName(
             "ticket-" + ("000000" + ticket_record.rows[0].ticket_id).slice(-6)
           );
@@ -222,7 +222,7 @@ module.exports = {
 
       fs.appendFile(
         fileName,
-        "\n" + message.member.displayName + ": " + message.toString(),
+        message.member.displayName + ": " + message.toString() + "\n",
         function (err) {
           if (err)
             console.error("There was an error writing the the file\n" + err);
