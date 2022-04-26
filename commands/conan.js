@@ -1,4 +1,6 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
+const { conan_embed } = require("../jsons/server-embeds");
+const { sendLink } = require("../tools");
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -16,48 +18,7 @@ module.exports = {
         interaction.member.roles.cache.has(process.env.DC_MOD_ROLE)) &&
       interaction.options.getBoolean("link") != true
     ) {
-      const embed = {
-        title: "Operation Exiles",
-        description:
-          "Our Conan server offers a casual PvE experience on the Exiled Lands map with 2x harvest rate and a few quality-of-life mods. The server is hosted in East US but is also suitable for players in the EU!",
-        color: 16731689,
-        image: {
-          url: "https://operationscentre.github.io/community/img/conan-banner1.jpg",
-        },
-        fields: [
-          {
-            name: "Connection Info:",
-            value:
-              "  •   Server Name: Operation Exiles - PvE - 2x - Casual RP - Modded \n  •   Server IP: 192.154.228.127:7905",
-          },
-          {
-            name: "Admins:",
-            value:
-              "Our __admins are available on the Discord__ to help with any important issues, however, we trust the community to be as __mature and patient as possible__ when the admins are not available in-game. __Please respect this__. Do not call admins for silly issues and respect that they may be busy, so please do not demand things or complain if they cannot be there right away.",
-          },
-          {
-            name: "Rules:",
-            value:
-              " •   NO displaying inappropriate or discriminatory language, usernames or pictures!\n •   NO stealing other people’s belongings! (Even in a public place)\n •   NO blocking passageways or entrances to important areas within the Exiled Lands! (or block important NPC spawns)\n •   You must ask permission before building directly beside another player!\n•   NO more than 2 separate builds! (without permission)\n •   NO exploitation, cheating or hacking!\n •   MASSIVE builds the size of an entire city are prohibited unless you get permission from an admin!\n •   Thralls and Thespians should not be left in AI towns like Sepermeru!\n •   Obey the guild rules and city laws which are displayed in-game!\n •   All player trades must be completed with the agreed upon terms for all parties!",
-          },
-          {
-            name: "Server Mods:",
-            value:
-              "Find the Steam collection [here!](https://steamcommunity.com/sharedfiles/filedetails/?id=2616177527)",
-          },
-          {
-            name: "Vote For Our Server:",
-            value:
-              "Every 24-hours you can vote for our server [here](https://conan-exiles.com/server/89716/)!",
-          },
-          {
-            name: "Shortcut:",
-            value:
-              "You can get a join link to the server by typing `/conan` into any chat. <@813799178689708104> will DM you the link!",
-          },
-        ],
-      };
-      interaction.reply({ embeds: [embed] });
+      interaction.reply({ embeds: [conan_embed] });
     } else {
       if (
         interaction.options.getBoolean("link") ||
@@ -66,25 +27,12 @@ module.exports = {
           interaction.member.roles.cache.has(process.env.DC_MOD_ROLE)
         )
       ) {
-        const user = await client.users.cache.get(
-          interaction.member.user.id.toString()
+        sendLink(
+          interaction,
+          client,
+          process.env.CONAN_ADMIN_CHANNEL,
+          process.env.CONAN_LINK
         );
-        user.send({
-          content: "https://operationscentre.github.io/community/join-conan",
-        });
-
-        interaction.reply({
-          content: "The link has been sent you. Check your DMs!",
-          ephemeral: true,
-        });
-
-        client.channels.cache
-          .get("887374258576162816")
-          .send(
-            "<@" +
-              interaction.member.user.id +
-              "> has requested the Conan Server link."
-          );
       } else {
         interaction.reply({
           content: "You do not have permission to use this command.",

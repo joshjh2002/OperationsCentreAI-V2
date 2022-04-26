@@ -1,4 +1,3 @@
-const rust = require("./commands/rust");
 const ticket = require("./ticket");
 require("dotenv").config();
 module.exports = {
@@ -220,5 +219,27 @@ module.exports = {
         embeds: [embed],
       });
     }
+  },
+
+  sendLink: async function (interaction, client, channel, link) {
+    const user = await client.users.cache.get(
+      interaction.member.user.id.toString()
+    );
+    user.send({
+      content: link,
+    });
+
+    interaction.reply({
+      content: "The link has been sent you. Check your DMs!",
+      ephemeral: true,
+    });
+
+    client.channels.cache
+      .get(channel)
+      .send(
+        "<@" +
+          interaction.member.user.id +
+          "> has requested the Conan Server link."
+      );
   },
 };
