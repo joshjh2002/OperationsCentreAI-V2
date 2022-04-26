@@ -1,7 +1,6 @@
 require("dotenv").config();
 module.exports = {
   CreateChannel: async function (reaction, user, admin_role, client) {
-    console.log("Reaction Created on Report Message!");
     //creates channel in the same location as the reaction message
     const channel = await reaction.message.guild.channels.create(
       "ticket-" + this.GenerateName(user),
@@ -10,12 +9,12 @@ module.exports = {
         parent: process.env.DC_TICKETS_CATEGORY, //This is the category it is in
         permissionOverwrites: [
           {
-            id: "697047262081056828", //To make it be seen by a certain role, user an ID instead
+            id: process.env.DC_ADMIN_ROLE, //To make it be seen by a certain role, user an ID instead
             allow: ["VIEW_CHANNEL", "SEND_MESSAGES", "READ_MESSAGE_HISTORY"], //Allow permissions
             deny: [], //Deny permissions
           },
           {
-            id: "651471748214030408", //To make it be seen by a certain role, user an ID instead
+            id: process.env.DC_MOD_ROLE, //To make it be seen by a certain role, user an ID instead
             allow: ["VIEW_CHANNEL", "SEND_MESSAGES", "READ_MESSAGE_HISTORY"], //Allow permissions
             deny: [], //Deny permissions
           },
@@ -46,12 +45,12 @@ module.exports = {
   },
 
   GenerateName: function (user) {
-    return user.id;
+    let id = user.id;
+    return id.substring(0, 4);
   },
 
   CreateTicket: async function (reaction, user, client) {
     let admin_role = "";
-    console.log(reaction.emoji.name);
     if (reaction.emoji.name === "ConanExiles") {
       admin_role = "<@&" + process.env.DC_CONAN_ROLE + ">";
       this.CreateChannel(reaction, user, admin_role, client);
@@ -60,6 +59,9 @@ module.exports = {
       this.CreateChannel(reaction, user, admin_role, client);
     } else if (reaction.emoji.name === "Rust") {
       admin_role = "<@&" + process.env.DC_RUST_ROLE + ">";
+      this.CreateChannel(reaction, user, admin_role, client);
+    } else if (reaction.emoji.name === "farming") {
+      admin_role = "<@&" + process.env.DC_FARMING_ROLE + ">";
       this.CreateChannel(reaction, user, admin_role, client);
     } else if (reaction.emoji.name === "☑") {
       admin_role =
