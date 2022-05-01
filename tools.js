@@ -160,7 +160,7 @@ module.exports = {
         author: {
           name: "Terpene Boy",
           icon_url:
-            "https://cdn.discordapp.com/avatars/697595109415583756/b3a552d2d70c5fb6f70e792c955a0b70.png",
+            "https://cdn.discordapp.com/avatars/697595109415583756/b945b92f47ee1ab19543ce25f40ecb20.png",
         },
       };
 
