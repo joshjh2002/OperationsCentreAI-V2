@@ -81,7 +81,9 @@ client.on("interactionCreate", async (interaction) => {
   if (interaction.isButton()) {
     try {
       tools.buttonHandler(interaction, client);
-    } catch (err) {}
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   if (interaction.isCommand()) {

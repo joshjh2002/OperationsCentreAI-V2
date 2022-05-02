@@ -53,193 +53,224 @@ module.exports = {
   },
 
   buttonHandler: function (interaction, client) {
-    if (interaction.customId == "conan-button") {
-      this.conan_button(interaction, client);
-    } else if (interaction.customId == "rust-button") {
-      this.rust_button(interaction, client);
-    } else if (interaction.customId == "farming-button") {
-      this.farming_button(interaction, client);
-    } else if (interaction.customId == "rules-button") {
-      interaction.member.roles.add("672053262261813248");
-      interaction.reply({
-        content:
-          "Thank you for agreeing to the rules! You now have access to the rest of the server!\n\n" +
-          "You can go to the <#721368768093356094> channel to gain access to the role-specific channels!",
-        ephemeral: true,
-      });
+    try {
+      if (interaction.customId == "conan-button") {
+        this.conan_button(interaction, client);
+      } else if (interaction.customId == "rust-button") {
+        this.rust_button(interaction, client);
+      } else if (interaction.customId == "farming-button") {
+        this.farming_button(interaction, client);
+      } else if (interaction.customId == "rules-button") {
+        try {
+          interaction.member.roles.add("672053262261813248");
+          interaction.reply({
+            content:
+              "Thank you for agreeing to the rules! You now have access to the rest of the server!\n\n" +
+              "You can go to the <#721368768093356094> channel to gain access to the role-specific channels!",
+            ephemeral: true,
+          });
+        } catch (err) {
+          console.log(
+            "Something went wrong giving the user the members role\n\n" + err
+          );
+        }
+      }
+    } catch (err) {
+      console.log("Something went when handling the buttons\n\n" + err);
     }
   },
 
   conan_button: function (interaction, client) {
-    if (interaction.member.roles.cache.has("884739374284152863")) {
-      interaction.reply({
-        content:
-          "You no longer have the Conan role. We're sorry to see you go.",
-        ephemeral: true,
-      });
-      interaction.member.roles.remove("884739374284152863");
-      client.channels.cache
-        .get("887374258576162816")
-        .send(
-          "<@" + interaction.member.user.id + "> has removed the Conan role."
-        );
-    } else {
-      interaction.reply({
-        content: "You have been given the Conan role.",
-        ephemeral: true,
-      });
-      interaction.member.roles.add("884739374284152863");
-      client.channels.cache
-        .get("887374258576162816")
-        .send("<@" + interaction.member.user.id + "> has got the Conan role.");
+    try {
+      if (interaction.member.roles.cache.has("884739374284152863")) {
+        interaction.reply({
+          content:
+            "You no longer have the Conan role. We're sorry to see you go.",
+          ephemeral: true,
+        });
+        interaction.member.roles.remove("884739374284152863");
+        client.channels.cache
+          .get("887374258576162816")
+          .send(
+            "<@" + interaction.member.user.id + "> has removed the Conan role."
+          );
+      } else {
+        interaction.reply({
+          content: "You have been given the Conan role.",
+          ephemeral: true,
+        });
+        interaction.member.roles.add("884739374284152863");
+        client.channels.cache
+          .get("887374258576162816")
+          .send(
+            "<@" + interaction.member.user.id + "> has got the Conan role."
+          );
 
-      let messages = [
-        "Welcome to Operation Exiles! We hope you enjoy your stay!",
-        "Hello! It's great to have you here!",
-      ];
-      let rnd = Math.floor(Math.random() * messages.length);
+        let messages = [
+          "Welcome to Operation Exiles! We hope you enjoy your stay!",
+          "Hello! It's great to have you here!",
+        ];
+        let rnd = Math.floor(Math.random() * messages.length);
 
-      const embed = {
-        description:
-          messages[rnd] +
-          "\nYou can use `/conan` to get a link that will automatically connect you to the server.",
-        color: 16749824,
-        thumbnail: {
-          url: "https://operationscentre.github.io/community/img/conan-logo.png",
-        },
-        author: {
-          name: "JackalTaco",
-          icon_url:
-            "https://cdn.discordapp.com/avatars/228605814716366850/8dd6dba87edbe1ffd63c8b7ca0a8e874.png",
-        },
-      };
+        const embed = {
+          description:
+            messages[rnd] +
+            "\nYou can use `/conan` to get a link that will automatically connect you to the server.",
+          color: 16749824,
+          thumbnail: {
+            url: "https://operationscentre.github.io/community/img/conan-logo.png",
+          },
+          author: {
+            name: "JackalTaco",
+            icon_url:
+              "https://cdn.discordapp.com/avatars/228605814716366850/8dd6dba87edbe1ffd63c8b7ca0a8e874.png",
+          },
+        };
 
-      client.channels.cache.get("887374977219821588").send({
-        content: "<@" + interaction.member.user.id + ">",
-        embeds: [embed],
-      });
+        client.channels.cache.get("887374977219821588").send({
+          content: "<@" + interaction.member.user.id + ">",
+          embeds: [embed],
+        });
+      }
+    } catch (err) {
+      console.log("Something went wrong sending the interaction\n\n" + err);
     }
   },
 
   rust_button: function (interaction, client) {
-    if (interaction.member.roles.cache.has("870978829974384660")) {
-      interaction.reply({
-        content: "You no longer have the Rust role. We're sorry to see you go.",
-        ephemeral: true,
-      });
-      interaction.member.roles.remove("870978829974384660");
-      client.channels.cache
-        .get("947811153092964382")
-        .send(
-          "<@" + interaction.member.user.id + "> has removed the Rust role."
-        );
-    } else {
-      interaction.reply({
-        content: "You have been given the Rust role.",
-        ephemeral: true,
-      });
-      interaction.member.roles.add("870978829974384660");
-      client.channels.cache
-        .get("947811153092964382")
-        .send("<@" + interaction.member.user.id + "> has got the Rust role.");
+    try {
+      if (interaction.member.roles.cache.has("870978829974384660")) {
+        interaction.reply({
+          content:
+            "You no longer have the Rust role. We're sorry to see you go.",
+          ephemeral: true,
+        });
+        interaction.member.roles.remove("870978829974384660");
+        client.channels.cache
+          .get("947811153092964382")
+          .send(
+            "<@" + interaction.member.user.id + "> has removed the Rust role."
+          );
+      } else {
+        interaction.reply({
+          content: "You have been given the Rust role.",
+          ephemeral: true,
+        });
+        interaction.member.roles.add("870978829974384660");
+        client.channels.cache
+          .get("947811153092964382")
+          .send("<@" + interaction.member.user.id + "> has got the Rust role.");
 
-      let messages = [
-        "Welcome to Rusty Operations! We hope you enjoy your stay!",
-        "Hello! It's great to have you here!",
-      ];
-      let rnd = Math.floor(Math.random() * messages.length);
+        let messages = [
+          "Welcome to Rusty Operations! We hope you enjoy your stay!",
+          "Hello! It's great to have you here!",
+        ];
+        let rnd = Math.floor(Math.random() * messages.length);
 
-      const embed = {
-        description:
-          messages[rnd] +
-          "\nYou can use `/rust` to get a link that will automatically connect you to the server.",
-        color: 16749824,
-        thumbnail: {
-          url: "https://operationscentre.github.io/community/img/rust-logo.jpg",
-        },
-        author: {
-          name: "Terpene Boy",
-          icon_url:
-            "https://cdn.discordapp.com/avatars/697595109415583756/b945b92f47ee1ab19543ce25f40ecb20.png",
-        },
-      };
+        const embed = {
+          description:
+            messages[rnd] +
+            "\nYou can use `/rust` to get a link that will automatically connect you to the server.",
+          color: 16749824,
+          thumbnail: {
+            url: "https://operationscentre.github.io/community/img/rust-logo.jpg",
+          },
+          author: {
+            name: "Terpene Boy",
+            icon_url:
+              "https://cdn.discordapp.com/avatars/697595109415583756/b945b92f47ee1ab19543ce25f40ecb20.png",
+          },
+        };
 
-      client.channels.cache.get("947813530407682068").send({
-        content: "<@" + interaction.member.user.id + ">",
-        embeds: [embed],
-      });
+        client.channels.cache.get("947813530407682068").send({
+          content: "<@" + interaction.member.user.id + ">",
+          embeds: [embed],
+        });
+      }
+    } catch (err) {
+      console.log("Something went wrong sending the interaction\n\n" + err);
     }
   },
 
   farming_button: function (interaction, client) {
-    if (interaction.member.roles.cache.has("967142420619862056")) {
-      interaction.reply({
-        content:
-          "You no longer have the Farming role. We're sorry to see you go.",
-        ephemeral: true,
-      });
-      interaction.member.roles.remove("967142420619862056");
-      client.channels.cache
-        .get("967142992764874772")
-        .send(
-          "<@" + interaction.member.user.id + "> has removed the Farming role."
-        );
-    } else {
-      interaction.reply({
-        content: "You have been given the Farming role.",
-        ephemeral: true,
-      });
-      interaction.member.roles.add("967142420619862056");
-      client.channels.cache
-        .get("967142992764874772")
-        .send(
-          "<@" + interaction.member.user.id + "> has got the Farming role."
-        );
+    try {
+      if (interaction.member.roles.cache.has("967142420619862056")) {
+        interaction.reply({
+          content:
+            "You no longer have the Farming role. We're sorry to see you go.",
+          ephemeral: true,
+        });
+        interaction.member.roles.remove("967142420619862056");
+        client.channels.cache
+          .get("967142992764874772")
+          .send(
+            "<@" +
+              interaction.member.user.id +
+              "> has removed the Farming role."
+          );
+      } else {
+        interaction.reply({
+          content: "You have been given the Farming role.",
+          ephemeral: true,
+        });
+        interaction.member.roles.add("967142420619862056");
+        client.channels.cache
+          .get("967142992764874772")
+          .send(
+            "<@" + interaction.member.user.id + "> has got the Farming role."
+          );
 
-      let messages = [
-        "Welcome to Farming Operations! We hope you enjoy your stay!",
-        "Hello! It's great to have you here!",
-      ];
-      let rnd = Math.floor(Math.random() * messages.length);
+        let messages = [
+          "Welcome to Farming Operations! We hope you enjoy your stay!",
+          "Hello! It's great to have you here!",
+        ];
+        let rnd = Math.floor(Math.random() * messages.length);
 
-      const embed = {
-        description:
-          messages[rnd] +
-          "\nGo to <#967144306777419876> to get the information to join the server.",
-        color: 16749824,
-        author: {
-          name: "Alan",
-          icon_url:
-            "https://cdn.discordapp.com/avatars/456943422717165579/ef4f25cbc19971e9862efd04f5daa299.png?size=1024",
-        },
-      };
+        const embed = {
+          description:
+            messages[rnd] +
+            "\nGo to <#967144306777419876> to get the information to join the server.",
+          color: 16749824,
+          author: {
+            name: "Alan",
+            icon_url:
+              "https://cdn.discordapp.com/avatars/456943422717165579/ef4f25cbc19971e9862efd04f5daa299.png?size=1024",
+          },
+        };
 
-      client.channels.cache.get("967143916249964564").send({
-        content: "<@" + interaction.member.user.id + ">",
-        embeds: [embed],
-      });
+        client.channels.cache.get("967143916249964564").send({
+          content: "<@" + interaction.member.user.id + ">",
+          embeds: [embed],
+        });
+      }
+    } catch (err) {
+      console.log("Something went wrong sending the interaction\n\n" + err);
     }
   },
 
   sendLink: async function (interaction, client, channel, link) {
-    const user = await client.users.cache.get(
-      interaction.member.user.id.toString()
-    );
-    user.send({
-      content: link,
-    });
-
-    interaction.reply({
-      content: "The link has been sent you. Check your DMs!",
-      ephemeral: true,
-    });
-
-    client.channels.cache
-      .get(channel)
-      .send(
-        "<@" +
-          interaction.member.user.id +
-          "> has requested the Conan Server link."
+    try {
+      const user = await client.users.cache.get(
+        interaction.member.user.id.toString()
       );
+      user.send({
+        content: link,
+      });
+
+      interaction.reply({
+        content: "The link has been sent you. Check your DMs!",
+        ephemeral: true,
+      });
+
+      client.channels.cache
+        .get(channel)
+        .send(
+          "<@" +
+            interaction.member.user.id +
+            "> has requested the Conan Server link."
+        );
+    } catch (err) {
+      console.log("Something went wrong sending the link\n\n" + err);
+    }
   },
 };

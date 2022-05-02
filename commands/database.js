@@ -7,7 +7,10 @@ module.exports = {
     .setName("commongames")
     .setDescription("Finds Common Games")
     .addStringOption((option) =>
-      option.setName("names").setDescription("Give names of everyone")
+      option
+        .setName("names")
+        .setDescription("Give names of everyone")
+        .setRequired(true)
     ),
   async execute(interaction, client) {
     const pgDatabase = require("pg");
