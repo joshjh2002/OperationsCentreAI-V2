@@ -2,7 +2,7 @@ require("dotenv").config();
 const tools = require("./tools");
 
 const { REST } = require("@discordjs/rest");
-const { Routes } = require("discord-api-types/v10");
+const { Routes } = require("discord-api-types/v9");
 
 const { Intents, Client, Collection } = require("discord.js");
 const client = new Client({
@@ -23,7 +23,7 @@ let commands = tools.LoadCommands(fs, client);
 
 const DELETE = false;
 if (DELETE) {
-  const rest = new REST({ version: "10" }).setToken(process.env.DC_TOKEN);
+  const rest = new REST({ version: "9" }).setToken(process.env.DC_TOKEN);
   rest
     .get(
       Routes.applicationGuildCommands(
@@ -52,7 +52,7 @@ client.once("ready", async () => {
   const CLIENT_ID = client.user.id;
 
   const rest = new REST({
-    version: "10",
+    version: "9",
   }).setToken(process.env.DC_TOKEN);
 
   (async () => {
