@@ -31,7 +31,7 @@ module.exports = {
       {
         name: "Vote For Our Server:",
         value:
-          "Every 24-hours you can vote for our server [here](https://conan-exiles.com/server/89716/)!",
+          "Every 24-hours you can vote for our server [here](https://conan-exiles.com/server/89716/)! You can also use `/conan vote` to have the link sent to your DMs.",
       },
       {
         name: "Shortcut:",
@@ -68,7 +68,7 @@ module.exports = {
       {
         name: "Vote For Our Server:",
         value:
-          "Every 24-hours you can vote for our server here to claim rewards in-game. Click [here](https://rust-servers.net/server/166243/)",
+          "Every 24-hours you can vote for our server here to claim rewards in-game. Click [here](https://rust-servers.net/server/166243/). You can also use `/rust vote` to have the link sent to your DMs.",
       },
       {
         name: "Shortcut:",

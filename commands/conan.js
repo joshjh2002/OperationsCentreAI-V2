@@ -6,32 +6,40 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName("conan")
     .setDescription("Sends Conan Embed and Link")
-    .addBooleanOption((option) =>
+    .addStringOption((option) =>
       option
         .setName("link")
-        .setDescription("Do you want the link?")
+        .setDescription("Which link do you want?")
         .setRequired(false)
+        .setChoices(
+          { name: "Join Link", value: "join" },
+          { name: "Vote Link", value: "vote" }
+        )
     ),
   async execute(interaction, client) {
+    let choice = interaction.options.getString("link");
     if (
       (interaction.member.roles.cache.has(process.env.DC_ADMIN_ROLE) ||
         interaction.member.roles.cache.has(process.env.DC_MOD_ROLE)) &&
-      interaction.options.getBoolean("link") != true
+      choice == null
     ) {
       interaction.reply({ embeds: [conan_embed] });
     } else {
-      if (
-        interaction.options.getBoolean("link") ||
-        !(
-          interaction.member.roles.cache.has(process.env.DC_ADMIN_ROLE) ||
-          interaction.member.roles.cache.has(process.env.DC_MOD_ROLE)
-        )
-      ) {
+      if (choice == "join" || choice == null) {
         sendLink(
           interaction,
           client,
           process.env.CONAN_ADMIN_CHANNEL,
-          process.env.CONAN_LINK
+          process.env.CONAN_LINK,
+          "join"
+        );
+      } else if (choice == "vote") {
+        sendLink(
+          interaction,
+          client,
+          process.env.CONAN_ADMIN_CHANNEL,
+          "https://conan-exiles.com/server/89716/",
+          "vote"
         );
       } else {
         interaction.reply({

@@ -2,7 +2,7 @@ require("dotenv").config();
 const tools = require("./tools");
 
 const { REST } = require("@discordjs/rest");
-const { Routes } = require("discord-api-types/v9");
+const { Routes } = require("discord-api-types/v10");
 
 const { Intents, Client, Collection } = require("discord.js");
 const client = new Client({
@@ -23,7 +23,7 @@ let commands = tools.LoadCommands(fs, client);
 
 const DELETE = false;
 if (DELETE) {
-  const rest = new REST({ version: "9" }).setToken(process.env.DC_TOKEN);
+  const rest = new REST({ version: "10" }).setToken(process.env.DC_TOKEN);
   rest
     .get(
       Routes.applicationGuildCommands(
@@ -45,14 +45,14 @@ if (DELETE) {
 }
 
 //Once the bot is online
-client.once("ready", () => {
+client.once("ready", async () => {
   console.log("Operations Centre AI: Online!");
   tools.ready(client);
 
   const CLIENT_ID = client.user.id;
 
   const rest = new REST({
-    version: "9",
+    version: "10",
   }).setToken(process.env.DC_TOKEN);
 
   (async () => {
@@ -75,7 +75,27 @@ client.once("ready", () => {
       console.error(err);
     }
   })();
+
+  status();
 });
+
+let statusList = [
+  "Welcome to the Operations Centre",
+  "Check out the our servers channel",
+  "Can't see something? Go to the roles channel!",
+  "Try our Conan server",
+  "Why not give our Rust server a go?",
+];
+
+async function status() {
+  let currentStatus = Math.floor(Math.random() * statusList.length);
+
+  client.user.setPresence({
+    activities: [{ name: statusList[currentStatus] }],
+  });
+
+  setTimeout(status, 60000);
+}
 
 client.on("interactionCreate", async (interaction) => {
   if (interaction.isButton()) {

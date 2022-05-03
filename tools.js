@@ -248,7 +248,7 @@ module.exports = {
     }
   },
 
-  sendLink: async function (interaction, client, channel, link) {
+  sendLink: async function (interaction, client, channel, link, type) {
     try {
       const user = await client.users.cache.get(
         interaction.member.user.id.toString()
@@ -267,7 +267,9 @@ module.exports = {
         .send(
           "<@" +
             interaction.member.user.id +
-            "> has requested the Conan Server link."
+            "> has requested the server " +
+            type +
+            " link."
         );
     } catch (err) {
       console.log("Something went wrong sending the link\n\n" + err);
