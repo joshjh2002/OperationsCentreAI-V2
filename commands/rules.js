@@ -15,7 +15,7 @@ module.exports = {
         description: "*Please read the rules below:*",
         color: 16034331,
         image: {
-          url: "https://media.discordapp.net/attachments/651470578741542936/813790022657638420/Operations_Logo.png",
+          url: "https://operationscentre.github.io/community/img/Operations_Logo.png",
         },
         fields: [
           {
@@ -56,7 +56,7 @@ module.exports = {
           {
             name: ":nine:",
             value:
-              "No NSFW content! NSFW memes are allowed in <#786594678505603082> but they must be memes!",
+              "No NSFW content! NSFW memes are allowed in <#667796238384758792> but they must be memes!",
           },
           {
             name: ":one::zero:",
