@@ -275,4 +275,27 @@ module.exports = {
       console.log("Something went wrong sending the link\n\n" + err);
     }
   },
+
+  manageMessages: function (prefix, message, client) {
+    if (
+      message.author.id == 362647384502697984 &&
+      message.channel.id == 947890245398044723
+    ) {
+      if (
+        message.content.includes(
+          "Server is back online! Players may now re-join."
+        )
+      ) {
+        client.channels.cache
+          .get(message.channel.id)
+          .setName("🟢│rust-server-status");
+        console.log("Rust Server Online");
+      } else if (message.content.includes("Server shutting down.")) {
+        let result = client.channels.cache
+          .get(message.channel.id)
+          .setName("🔴│rust-server-status");
+        console.log(result + "\nRust Server Offline");
+      }
+    }
+  },
 };

@@ -98,32 +98,34 @@ async function status() {
 }
 
 client.on("interactionCreate", async (interaction) => {
-  if (interaction.isButton()) {
-    try {
-      tools.buttonHandler(interaction, client);
-    } catch (err) {
-      console.log(err);
+  try {
+    if (interaction.isButton()) {
+      try {
+        tools.buttonHandler(interaction, client);
+      } catch (err) {
+        console.log(err);
+      }
     }
-  }
 
-  if (interaction.isCommand()) {
-    const command = client.commands.get(interaction.commandName);
+    if (interaction.isCommand()) {
+      const command = client.commands.get(interaction.commandName);
 
-    try {
-      await command.execute(interaction, client);
-    } catch (err) {
-      interaction.reply({
-        content: "An error occurred using this command",
-        ephemeral: true,
-      });
-      console.error(err);
+      try {
+        await command.execute(interaction, client);
+      } catch (err) {
+        interaction.reply({
+          content: "An error occurred using this command",
+          ephemeral: true,
+        });
+        console.error(err);
+      }
     }
-  }
+  } catch (err) {}
 });
 
 //When someone sends a message, this will execute
 client.on("messageCreate", (message) => {
-  //tools.messageCommand(prefix, message, Discord, client);
+  //tools.manageMessages(prefix, message, client);
   ticket.logMessage(message, client);
 });
 
