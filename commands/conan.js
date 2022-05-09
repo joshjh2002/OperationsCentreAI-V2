@@ -38,7 +38,7 @@ module.exports = {
           interaction,
           client,
           process.env.CONAN_ADMIN_CHANNEL,
-          "https://conan-exiles.com/server/89716/",
+          "https://conan-exiles.com/server/90048/",
           "vote"
         );
       } else {

@@ -2,16 +2,16 @@ module.exports = {
   conan_embed: {
     title: "Operation Exiles",
     description:
-      "Our Conan server offers a casual PvE experience on the Exiled Lands map with 2x harvest rate and a few quality-of-life mods. The server is hosted in East US but is also suitable for players in the EU!",
+      "Our server offers an immersive RP experience crafted with precision by our admins who have taken a lot of time to help shape this server to be as fun and balanced as possible. With the help of many modifications, our server is packed full of new features, systems and tons of new items which have found their way into our economic system via vendors, but we wish to have players run their own stores and businesses. We have a strict set of rules which prevent things such as RDM, force RP and random raiding, our active and friendly staff members are there to ensure everyone has a fun and enjoyable time while still enforcing these rules.",
     color: 16731689,
     image: {
-      url: "https://operationscentre.github.io/community/img/conan-banner1.jpg",
+      url: "https://cdn.discordapp.com/attachments/742790672813391873/973320175082430575/815765.jpg",
     },
     fields: [
       {
         name: "Connection Info:",
         value:
-          "  •   Server Name: Operation Exiles - PvE - 2x - Casual RP - Modded \n  •   Server IP: 176.57.165.12:29100",
+          "  •   Server Name: Operation Exiles RP \n  •   Server IP: 176.57.165.12:29100",
       },
       {
         name: "Admins:",
@@ -21,7 +21,7 @@ module.exports = {
       {
         name: "Rules:",
         value:
-          " •   NO displaying inappropriate or discriminatory language, usernames or pictures!\n •   NO stealing other people’s belongings! (Even in a public place)\n •   NO blocking passageways or entrances to important areas within the Exiled Lands! (or block important NPC spawns)\n •   You must ask permission before building directly beside another player!\n•   NO more than 2 separate builds! (without permission)\n •   NO exploitation, cheating or hacking!\n •   MASSIVE builds the size of an entire city are prohibited unless you get permission from an admin!\n •   Thralls and Thespians should not be left in AI towns like Sepermeru!\n •   Obey the guild rules and city laws which are displayed in-game!\n •   All player trades must be completed with the agreed upon terms for all parties!",
+          "  •   No inappropriate or discriminatory language, content, or behaviour!\n  •   No exploitation, cheating or hacking!\n  •   No blocking passages or entrances to important areas or spawns!\n  •   No blocking or leaving items around other players buildings!\n  •   2 separate builds maximum for a single player and 3 for a guild of 2+!\n  •   6000 building blocks maximum for a single player and 8000 for a clan of 2+!\n  •   Do not leave thrall's or items in NPC towns or other random areas!\n  •   No stealing other players things (unless their base has decayed)!\n  •   Admin town/city and guild laws must be followed!\n  •   No RDM (Killing someone without a reason)!\n  •   No force RP (If someone doesn't want to RP you can't force them)!\n  •   No random raiding (Battles & raids must be agreed upon by both parties)!\n  •   Your player name must be a character name, not a username!",
       },
       {
         name: "Server Mods:",
@@ -31,7 +31,7 @@ module.exports = {
       {
         name: "Vote For Our Server:",
         value:
-          "Every 24-hours you can vote for our server [here](https://conan-exiles.com/server/89716/)! You can also use `/conan vote` to have the link sent to your DMs.",
+          "Every 24-hours you can vote for our server [here](https://conan-exiles.com/server/90048/)! You can also use `/conan vote` to have the link sent to your DMs.",
       },
       {
         name: "Shortcut:",
