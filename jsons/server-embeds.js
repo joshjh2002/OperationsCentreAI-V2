@@ -11,7 +11,7 @@ module.exports = {
       {
         name: "Connection Info:",
         value:
-          "  •   Server Name: Operation Exiles - PvE - 2x - Casual RP - Modded \n  •   Server IP: 192.154.228.127:7905",
+          "  •   Server Name: Operation Exiles - PvE - 2x - Casual RP - Modded \n  •   Server IP: 176.57.165.12:29100",
       },
       {
         name: "Admins:",
