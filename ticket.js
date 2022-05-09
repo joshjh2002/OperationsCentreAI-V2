@@ -199,11 +199,7 @@ module.exports = {
     //console.log(message.channel.id);
 
     let query =
-      "SELECT * FROM tickets WHERE channel_id = " +
-      message.channel.id +
-      " AND user_id = " +
-      message.author.id +
-      ";";
+      "SELECT * FROM tickets WHERE channel_id = " + message.channel.id + ";";
 
     pgconnection.query(query, (err, res) => {
       if (err) {
