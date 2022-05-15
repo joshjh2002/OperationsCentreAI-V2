@@ -15,3 +15,7 @@ JackalTaco (Head Admin): Is it the same bed as last time when you had this issue
 LeanaMae: Same one. I didn't think to replace it until jow
 Operator MEE6: <@462780242768035850> just advanced to level 2!
 JackalTaco (Head Admin): Alright, thanks for letting me know! I'll await a response from the mod creator for the /home bug thing and I'll test out the current bed you are using in case it is an issue with the bed. I'll let you know what I find out and if I resolve the issue. In the meanwhile try to change to a different bed and see if that has the same issue 🙂
+JackalTaco (Head Admin): Hey Leana, sorry I haven't got back to you until now, I've been fixing a lot of server issues to make sure the server runs smooth as possible.
+I have not yet got a response from the mod dev regarding the /home deleting bug so at the moment try to avoid using this feature and just use regular bed spawns until I get to the bottom of it. Make sure your bed is not blocked by anything as this can affect your spawn ability and if this does not work try using a different bed.
+LeanaMae: I am sorry I havent gotten back to you, I had something going on. I am going to change the  bed. Thank you for your hard work on this
+JackalTaco (Head Admin): No worries at all, happy to help 🙂
