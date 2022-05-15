@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
-const { rust_embed } = require("../jsons/server-embeds");
+const { rust_embed, conan_embed } = require("../jsons/server-embeds");
 const { sendLink } = require("../tools");
 
 module.exports = {

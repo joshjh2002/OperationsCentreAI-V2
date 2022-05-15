@@ -53,12 +53,27 @@ module.exports = {
       {
         name: "Connection Info:",
         value:
-          "  •   Server Name: Rusty Operations - 3x | 1/2 Decay | (Shop|Events|Loot+|Clans) \n  •   Server IP: 199.127.61.3:28255",
+          "  •   Server Name: Rusty Operations 3x | Solo/Duo/Trio | (½Decay|RaidAlarm|Loot+|Shop)\n  •   Server IP: 199.127.61.3:28255",
       },
       {
         name: "Wipe Info:",
         value:
-          "Our server does a __map and blueprint__ wipe on the __first Thursday of every month__ so as to stay on schedule with the Rust monthly updates.",
+          "Our server does a __map and blueprint__ wipe __ every other Thursday (biweekly)__ so as to stay on schedule with the Rust monthly updates.",
+      },
+      {
+        name: "Features:",
+        value:
+          "  •   3x Gather, 2x Sulfur, 3x Comps, Less Junk\n  •   Decay ½, All Transport Entities Decay Reduced (TC NEEDED)\n  •   Resources 3x, Components 2x, Charcoal 3x Stacksize\n  •   Wood 4x, Stone 4x, Metal 4x TC Stacksize\n  •   Medsyringe & Medkit 3, Bandage 5\n  •   2x Recycling Speed\n  •   55 Min Day, 5 Min Night\n  •   2x Smelting Speed\n  •   10min Hackable Crate",
+      },
+      {
+        name: "Addon Events:",
+        value:
+          "  •   Raidable bases, with easy, medium, hard levels of difficulty can purchase expert and nightmare.\n  •   PilotEject for patrol heli, scientist eject upon shooting it down.\n  •   PlaneCrash, shoot plane down with lock on rocket/velocity rocket or has a 15% chance to malfunction.\n  •   HijackableCH47, can take control of chinook to fly.\n  •   Power Grid, to tap into and steal power from the power lines, has great detail as you can be electricuted, also adds street lights.",
+      },
+      {
+        name: "VIP Plugins:",
+        value:
+          "SkinBox, SignArtist, AutoCode, AutoDoor, EnhancedHammer, NameChanger, ColouredChat and QueueSkip.\nUse, /INFO - for patreon details click 'view webpage' at bottom",
       },
       {
         name: "Admins:",
@@ -151,6 +166,28 @@ module.exports = {
         name: "Donate:",
         value:
           "If you would like to make a one-time donation towards our community you can do so through PayPal. This will help us with the community server costs and would be really appreciated.\n\nDonations and server boosts will gain you the <@&810882948709613639> Discord role and VIP Minecraft title.\n\nYou can make a donation [here](https://paypal.me/pools/c/8quGTqBY1J)",
+      },
+    ],
+  },
+
+  farming_embed: {
+    title: "Farming Simulator Server",
+    description:
+      "We have a private community farming server which any members of the community can join by grabbing the password from our Discord server! We are more than happy to have community members come join one of the many farms. Our Farming Simulator 22 server is host to 4 individual farms, each with an admin farm manager who oversees a certain area of our own custom Elmcreek map. Players can join and leave farms as they like in order to work between farms if they like, or they can remain loyal to one farm. Permissions to farm, build, buy, rent, etc, are set by each farm manager.",
+    color: 6411910,
+    image: {
+      url: "https://cdn.discordapp.com/attachments/975057716995293214/975091978394021959/Farming_Operations.jpg",
+    },
+    fields: [
+      {
+        name: "Connection Info:",
+        value:
+          "  •   Server Name: Farming Operations\n  •   Server Password: opcen",
+      },
+      {
+        name: "Mod Info:",
+        value:
+          "Our server is currently running the following mods which need to be downloaded before joining the server:\n  •   Precision Farming DLC\n  •   Elmcreek Farms (Edited Map)\n  •   EnhancedVehicle\n  •   Free Landscaping Tools\n  •   LIZARD 6M \n  •   No Sleep\n  •   TLX 2020 Series\nDownload the mods [here](http://185.239.211.77:8350/mods.html).\nMod zip files need to be placed in your mods folder in: \n*Documents/My Games/Farming Simulator 22/Mods*.",
       },
     ],
   },
