@@ -107,6 +107,10 @@ client.on("interactionCreate", async (interaction) => {
       }
     }
 
+    if (interaction.isSelectMenu()) {
+      tools.menuHandler(interaction, client);
+    }
+
     if (interaction.isCommand()) {
       const command = client.commands.get(interaction.commandName);
 

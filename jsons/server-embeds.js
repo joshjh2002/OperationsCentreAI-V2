@@ -191,4 +191,14 @@ module.exports = {
       },
     ],
   },
+
+  conan_property: {
+    title: "Operation Exiles - Property Application",
+    description:
+      "Do you want to buy a property in one of our lovely cities? Click the button below to start an application!",
+    color: 16731689,
+    image: {
+      url: "https://cdn.discordapp.com/attachments/742790672813391873/975743932975702026/Amarna_Property_Agency.png",
+    },
+  },
 };

@@ -1,4 +1,5 @@
 const ticket = require("./ticket");
+const { MessageActionRow, MessageSelectMenu } = require("discord.js");
 require("dotenv").config();
 module.exports = {
   LoadCommands: function (fs, client) {
@@ -75,6 +76,8 @@ module.exports = {
             "Something went wrong giving the user the members role\n\n" + err
           );
         }
+      } else if (interaction.customId === "property-apply") {
+        this.PropertyApplication(interaction, client);
       } else if (interaction.customId === "conan-ticket") {
         admin_role = "<@&" + process.env.DC_CONAN_ROLE + ">";
         ticket.CreateChannel(
@@ -134,6 +137,97 @@ module.exports = {
       }
     } catch (err) {
       console.log("Something went when handling the buttons\n\n" + err);
+    }
+  },
+
+  PropertyApplication: function (interaction, client) {
+    const row = new MessageActionRow().addComponents(
+      new MessageSelectMenu()
+        .setCustomId("select-property")
+        .setPlaceholder("Select a location")
+        .addOptions([
+          {
+            label: "Fallholt",
+            description: "Apply for a property in Fallholt",
+            value: "fallholt_property",
+          },
+          {
+            label: "Ivywood",
+            description: "Apply for a property in Ivywood",
+            value: "ivywood_property",
+          },
+          {
+            label: "Faiyum",
+            description: "Apply for a property in Faiyum",
+            value: "faiyum_property",
+          },
+        ])
+    );
+
+    interaction.reply({
+      content: "Please select a city",
+      components: [row],
+      ephemeral: true,
+    });
+  },
+
+  menuHandler: function (interaction, client) {
+    if (interaction.customId === "select-property") {
+      let property = "";
+
+      if (interaction.values[0] == "fallholt_property") property = "Fallholt";
+      else if (interaction.values[0] == "ivywood_property")
+        property = "Ivywood";
+      else if (interaction.values[0] == "faiyum_property") property = "Faiyum";
+
+      const row = new MessageActionRow().addComponents(
+        new MessageSelectMenu()
+          .setCustomId("select-property-type")
+          .setPlaceholder("Select a property type")
+          .addOptions([
+            {
+              label: "Commercial",
+              description: "Apply for a commercial property in " + property,
+              value: "commercial " + property,
+            },
+            {
+              label: "Residential",
+              description: "Apply for a residential property in " + property,
+              value: "Residential " + property,
+            },
+          ])
+      );
+
+      interaction.reply({
+        content:
+          "You have selected a property in " +
+          property +
+          ". What type of property do you want?",
+        ephemeral: true,
+        components: [row],
+      });
+    } else if (interaction.customId == "select-property-type") {
+      let property_location = interaction.values[0].split(" ");
+      interaction.reply({
+        content:
+          "We have logged your application for a " +
+          property_location[0] +
+          " location in " +
+          property_location[1] +
+          ". An admin will be with you shortly to finalise the details!",
+        ephemeral: true,
+      });
+
+      client.channels.cache
+        .get("887374258576162816")
+        .send(
+          "<@&892427926811865119> <@" +
+            interaction.member.user.id +
+            "> has applied for a " +
+            property_location[0] +
+            " property in " +
+            property_location[1]
+        );
     }
   },
 
