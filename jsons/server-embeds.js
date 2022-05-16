@@ -96,7 +96,7 @@ module.exports = {
   report_embed: {
     title: "Create a Support Ticket",
     description:
-      "React with the relevant emoji to create a ticket and get in contact with the appropriate team!",
+      "Click relevant button to create a ticket and get in contact with the appropriate team!",
     color: 12743972,
     fields: [
       {
