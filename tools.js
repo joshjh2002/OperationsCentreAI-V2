@@ -17,9 +17,9 @@ module.exports = {
 
   ready: function (client) {
     //Caches message for the ticketing system
-    client.channels.cache
-      .get(process.env.DC_TICKETS_CHANNEL)
-      .messages.fetch(process.env.DC_TICKETS_MESSAGE);
+    //client.channels.cache
+    //.get(process.env.DC_TICKETS_CHANNEL)
+    //.messages.fetch(process.env.DC_TICKETS_MESSAGE);
   },
 
   messageCommand: function (prefix, message, Discord, client) {
@@ -54,6 +54,7 @@ module.exports = {
 
   buttonHandler: function (interaction, client) {
     try {
+      let admin_role = "";
       if (interaction.customId == "conan-button") {
         this.conan_button(interaction, client);
       } else if (interaction.customId == "rust-button") {
@@ -74,6 +75,62 @@ module.exports = {
             "Something went wrong giving the user the members role\n\n" + err
           );
         }
+      } else if (interaction.customId === "conan-ticket") {
+        admin_role = "<@&" + process.env.DC_CONAN_ROLE + ">";
+        ticket.CreateChannel(
+          null,
+          interaction.member.user,
+          admin_role,
+          process.env.DC_CONAN_ROLE,
+          client,
+          interaction
+        );
+      } else if (interaction.customId === "discord-ticket") {
+        admin_role = "<@&" + process.env.DC_DISCORD_ROLE + ">";
+        ticket.CreateChannel(
+          null,
+          interaction.member.user,
+          admin_role,
+          process.env.DC_DISCORD_ROLE,
+          client,
+          interaction
+        );
+      } else if (interaction.customId === "rust-ticket") {
+        admin_role = "<@&" + process.env.DC_RUST_ROLE + ">";
+        ticket.CreateChannel(
+          null,
+          interaction.member.user,
+          admin_role,
+          process.env.DC_RUST_ROLE,
+          client,
+          interaction
+        );
+      } else if (interaction.customId === "farming-ticket") {
+        admin_role = "<@&" + process.env.DC_FARMING_ROLE + ">";
+        ticket.CreateChannel(
+          null,
+          interaction.member.user,
+          admin_role,
+          process.env.DC_FARMING_ROLE,
+          client,
+          interaction
+        );
+      } else if (interaction.customId === "other-ticket") {
+        admin_role =
+          "<@&" +
+          process.env.DC_ADMIN_ROLE +
+          ">" +
+          " <@&" +
+          process.env.DC_MOD_ROLE +
+          ">";
+        ticket.CreateChannel(
+          null,
+          interaction.member.user,
+          admin_role,
+          process.env.DC_ADMIN_ROLE,
+          client,
+          interaction
+        );
       }
     } catch (err) {
       console.log("Something went when handling the buttons\n\n" + err);

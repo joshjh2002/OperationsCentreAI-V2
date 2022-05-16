@@ -131,7 +131,7 @@ client.on("messageCreate", (message) => {
 
 //when a user reacts to a message
 client.on("messageReactionAdd", (reaction, user) => {
-  tools.messageReaction(reaction, user, client);
+  //tools.messageReaction(reaction, user, client);
 });
 
 const ships = ["Star Fighter", "Cruiser", "Ship"];
