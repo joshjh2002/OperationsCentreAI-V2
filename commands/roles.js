@@ -15,7 +15,9 @@ module.exports = {
         interaction.member.roles.cache.has(process.env.DC_MOD_ROLE)) &&
       interaction.options.getBoolean("link") != true
     ) {
-      let row = new MessageActionRow().addComponents(
+      let row;
+      /*
+      row = new MessageActionRow().addComponents(
         new MessageButton()
           .setCustomId("conan-button")
           .setLabel("Operation Exiles")
@@ -28,6 +30,7 @@ module.exports = {
         components: [row],
         fetchReply: true,
       });
+      */
 
       row = new MessageActionRow().addComponents(
         new MessageButton()

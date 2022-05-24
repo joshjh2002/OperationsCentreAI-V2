@@ -16,10 +16,12 @@ module.exports = {
           .setCustomId("discord-ticket")
           .setStyle("SECONDARY")
           .setEmoji(process.env.DISCORD_EMOJI),
+        /*
         new MessageButton()
           .setCustomId("conan-ticket")
           .setStyle("SECONDARY")
           .setEmoji(process.env.CONAN_EMOJI),
+          */
         new MessageButton()
           .setCustomId("rust-ticket")
           .setStyle("SECONDARY")
@@ -34,10 +36,9 @@ module.exports = {
           .setEmoji(process.env.OTHER_EMOJI)
       );
 
-      let msg = await interaction.reply({
+      await interaction.reply({
         embeds: [report_embed],
         components: [row],
-        fetchReply: true,
       });
     } else {
       interaction.reply({
