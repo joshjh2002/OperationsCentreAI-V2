@@ -104,11 +104,13 @@ module.exports = {
         value: "Report an issue with the\nDiscord server",
         inline: true,
       },
+      /*
       {
         name: process.env.CONAN_EMOJI,
         value: "Report an issue with the\nConan server",
         inline: true,
       },
+      */
       {
         name: process.env.RUST_EMOJI,
         value: "Report an issue with the\nRust server",
