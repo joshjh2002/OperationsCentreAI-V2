@@ -83,8 +83,8 @@ let statusList = [
   "Welcome to the Operations Centre",
   "Check out the our servers channel",
   "Can't see something? Go to the roles channel!",
-  "Try our Conan server",
   "Why not give our Rust server a go?",
+  "All systems online!",
 ];
 
 async function status() {
