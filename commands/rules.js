@@ -21,52 +21,63 @@ module.exports = {
           {
             name: ":one:",
             value:
-              "Use correct channels for what you are posting \n(Check Channel Description)",
+              "Your account must comply with the Discord Terms of Service (Must be 13-years-old or older)!",
           },
           {
             name: ":two:",
-            value: "No loud noises or music played through your microphone!",
+            value: "No inappropriate names, profile pictures, or status'!",
           },
           {
             name: ":three:",
-            value: "No political or religious arguments!",
+            value: "Use the correct channels for what you are posting!",
           },
           {
             name: ":four:",
-            value: "No advertisement or selling of products!",
+            value:
+              "No offensive or inappropriate content, remarks, or song requests!",
           },
           {
             name: ":five:",
-            value: "No spamming channels!",
+            value:
+              "No NSFW content (NSFW memes are allowed in the meme channel but nothing too obscene)!",
           },
           {
             name: ":six:",
-            value:
-              "If you're streaming while in chat, you MUST have a `#` next to your name!",
+            value: "No spamming channels!",
           },
           {
             name: ":seven:",
-            value: "No offensive or inappropriate remarks or song requests!",
+            value:
+              "No advertising or selling of products, services or other communities!",
           },
           {
             name: ":eight:",
             value:
-              "No abusive talk to admins or moderators (They are here to help)!",
+              "No political or religious arguments (Try to keep political and/or religious conversations to a minimum)!",
           },
           {
             name: ":nine:",
-            value:
-              "No NSFW content! NSFW memes are allowed in <#667796238384758792> but they must be memes!",
+            value: "No loud noises or music played through your microphone!",
           },
           {
             name: ":one::zero:",
             value:
-              "Do not use the ticketing system for anything other than a legitimate reason!",
+              "No abusive talk to admins or moderators (They are here to help)!",
           },
           {
             name: ":one::one:",
             value:
-              "Your account MUST comply with the Discord [Terms of Service](https://discord.com/terms)! Must be 13-years-old or older.",
+              "If you are streaming publicly (Twitch, YouTube, etc.) while in chat you must add a hash symbol (#) to your nickname!",
+          },
+          {
+            name: ":one::two:",
+            value:
+              "Do not use the ticketing system for anything other than a legitimate reason!",
+          },
+          {
+            name: ":one::three:",
+            value:
+              "Treat everyone with respect. Absolutely no harassment, witch hunting, sexism, racism or hate speech will be tolerated.",
           },
         ],
       };
