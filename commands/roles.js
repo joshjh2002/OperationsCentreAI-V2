@@ -40,7 +40,7 @@ module.exports = {
           .setEmoji(process.env.RUST_EMOJI)
       );
 
-      message = await message.reply({
+      let message = await interaction.reply({
         embeds: [rust_role],
         components: [row],
         fetchReply: true,

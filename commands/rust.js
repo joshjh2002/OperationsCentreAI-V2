@@ -38,7 +38,7 @@ module.exports = {
           interaction,
           client,
           process.env.RUST_ADMIN_CHANNEL,
-          "https://rust-servers.net/server/166243/",
+          "https://rust-servers.net/server/167442/",
           "vote"
         );
       } else {
