@@ -27,10 +27,12 @@ module.exports = {
           .setCustomId("rust-ticket")
           .setStyle("SECONDARY")
           .setEmoji(process.env.RUST_EMOJI),
+        /*
         new MessageButton()
           .setCustomId("farming-ticket")
           .setStyle("SECONDARY")
           .setEmoji(process.env.FARMING_EMOJI),
+          */
         new MessageButton()
           .setCustomId("other-ticket")
           .setStyle("SECONDARY")

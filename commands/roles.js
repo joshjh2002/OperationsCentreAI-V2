@@ -47,6 +47,7 @@ module.exports = {
         fetchReply: true,
       });
 
+      /*
       row = new MessageActionRow().addComponents(
         new MessageButton()
           .setCustomId("farming-button")
@@ -56,6 +57,7 @@ module.exports = {
       );
 
       await message.reply({ embeds: [farming_role], components: [row] });
+      */
     } else {
       interaction.reply({
         content: "You do not have permission to use this command.",
