@@ -159,6 +159,24 @@ client.on("guildMemberAdd", async (member) => {
     );
 });
 
+client.on("guildMemberRemove", async (member) => {
+  await sleep(500);
+  let num = Math.floor(Math.random() * 30) + 1;
+  let rnd = Math.floor(Math.random() * ships.length);
+
+  client.channels.cache
+    .get(process.env.DC_WELCOME_CHANNEL)
+    .send(
+      "<@" +
+        member.id +
+        "> has left on their " +
+        ships[rnd] +
+        ". We hope to see them return soon.\n\nThere are now currently " +
+        client.guilds.cache.get("651455552517570586").memberCount +
+        " people on board."
+    );
+});
+
 client.login(process.env.DC_TOKEN);
 
 async function sleep(ms) {
