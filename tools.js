@@ -48,10 +48,12 @@ module.exports = {
     if (user.bot) return;
 
     //checks if the reaction is on the ticket message
+    /*
     if (reaction.message.id == process.env.DC_TICKETS_MESSAGE) {
       reaction.users.remove(user.id);
       ticket.CreateTicket(reaction, user, client);
     }
+    */
   },
 
   buttonHandler: function (interaction, client) {
