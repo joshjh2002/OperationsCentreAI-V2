@@ -116,11 +116,13 @@ module.exports = {
         value: "Report an issue with the\nRust server",
         inline: true,
       },
+      /*
       {
         name: process.env.FARMING_EMOJI,
         value: "Report an issue with the\nFarming Simulator server",
         inline: true,
       },
+      */
       {
         name: process.env.OTHER_EMOJI,
         value: "Report a different issue",
