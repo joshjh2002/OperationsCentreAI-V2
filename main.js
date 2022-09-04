@@ -1,4 +1,5 @@
 require("dotenv").config();
+const debug = require("./debug");
 const tools = require("./tools");
 
 const { REST } = require("@discordjs/rest");
@@ -46,7 +47,7 @@ if (DELETE) {
 
 //Once the bot is online
 client.once("ready", async () => {
-  console.log("Operations Centre AI: Online!");
+  debug.log("Operations Centre AI: Online!");
   tools.ready(client);
 
   const CLIENT_ID = client.user.id;
@@ -61,7 +62,7 @@ client.once("ready", async () => {
         await rest.put(Routes.applicationCommands(CLIENT_ID), {
           body: commands,
         });
-        console.log("Commands Registered Globally");
+        debug.log("Commands Registered Globally");
       } else {
         await rest.put(
           Routes.applicationGuildCommands(CLIENT_ID, process.env.DC_GUILD_ID),
@@ -69,7 +70,7 @@ client.once("ready", async () => {
             body: commands,
           }
         );
-        console.log("Commands Registered Locally");
+        debug.log("Commands Registered Locally");
       }
     } catch (err) {
       console.error(err);
@@ -103,7 +104,7 @@ client.on("interactionCreate", async (interaction) => {
       try {
         tools.buttonHandler(interaction, client);
       } catch (err) {
-        console.log(err);
+        debug.log(err);
       }
     }
 
@@ -160,7 +161,7 @@ client.on("guildMemberAdd", async (member) => {
 });
 
 client.on("guildMemberRemove", async (member) => {
-  console.log("Member Left\n");
+  debug.log("Member Left\n");
   await sleep(500);
   let num = Math.floor(Math.random() * 30) + 1;
   let rnd = Math.floor(Math.random() * ships.length);

@@ -1,4 +1,5 @@
 require("dotenv").config();
+const debug = require("./debug");
 const fs = require("fs");
 const pgDatabase = require("pg");
 
@@ -25,7 +26,7 @@ pgconnection.query(query, (err, res) => {
     output += res.rows[i].staff_id + "\n";
     i++;
   }
-  console.log(output);
+  debug.log(output);
   //pgconnection.end();
 });
 */
@@ -91,7 +92,7 @@ module.exports = {
     let created_date = new Date().toLocaleString();
     let ticket_record;
     created_date = created_date.replace(",", "");
-    console.log("New ticket created: " + created_date);
+    debug.log("New ticket created: ");
     let query = "SELECT * FROM users WHERE user_id = " + user.id + ";";
     let founduser = false;
 
@@ -210,7 +211,7 @@ module.exports = {
   },
 
   logMessage: function (message, client) {
-    //console.log(message.channel.id);
+    //debug.log(message.channel.id);
 
     let query =
       "SELECT * FROM tickets WHERE channel_id = " + message.channel.id + ";";

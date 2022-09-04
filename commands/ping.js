@@ -1,4 +1,5 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
+const debug = require("../debug");
 
 module.exports = {
   data: new SlashCommandBuilder().setName("ping").setDescription("Pong"),
