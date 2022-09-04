@@ -160,6 +160,7 @@ client.on("guildMemberAdd", async (member) => {
 });
 
 client.on("guildMemberRemove", async (member) => {
+  console.log("Member Left\n");
   await sleep(500);
   let num = Math.floor(Math.random() * 30) + 1;
   let rnd = Math.floor(Math.random() * ships.length);
