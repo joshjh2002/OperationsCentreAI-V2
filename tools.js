@@ -1,5 +1,6 @@
 const ticket = require("./ticket");
 const { MessageActionRow, MessageSelectMenu } = require("discord.js");
+const debug = require("./debug");
 require("dotenv").config();
 module.exports = {
   LoadCommands: function (fs, client) {
@@ -72,7 +73,7 @@ module.exports = {
             ephemeral: true,
           });
         } catch (err) {
-          console.log(
+          debug.log(
             "Something went wrong giving the user the members role\n\n" + err
           );
         }
@@ -136,7 +137,7 @@ module.exports = {
         );
       }
     } catch (err) {
-      console.log("Something went when handling the buttons\n\n" + err);
+      debug.log("Something went when handling the buttons\n\n" + err);
     }
   },
 
@@ -284,7 +285,7 @@ module.exports = {
         });
       }
     } catch (err) {
-      console.log("Something went wrong sending the interaction\n\n" + err);
+      debug.log("Something went wrong sending the interaction\n\n" + err);
     }
   },
 
@@ -339,7 +340,7 @@ module.exports = {
         });
       }
     } catch (err) {
-      console.log("Something went wrong sending the interaction\n\n" + err);
+      debug.log("Something went wrong sending the interaction\n\n" + err);
     }
   },
 
@@ -395,7 +396,7 @@ module.exports = {
         });
       }
     } catch (err) {
-      console.log("Something went wrong sending the interaction\n\n" + err);
+      debug.log("Something went wrong sending the interaction\n\n" + err);
     }
   },
 
@@ -423,7 +424,7 @@ module.exports = {
             " link."
         );
     } catch (err) {
-      console.log("Something went wrong sending the link\n\n" + err);
+      debug.log("Something went wrong sending the link\n\n" + err);
     }
   },
 
@@ -440,12 +441,12 @@ module.exports = {
         client.channels.cache
           .get(message.channel.id)
           .setName("🟢│rust-server-status");
-        console.log("Rust Server Online");
+        debug.log("Rust Server Online");
       } else if (message.content.includes("Server shutting down.")) {
         let result = client.channels.cache
           .get(message.channel.id)
           .setName("🔴│rust-server-status");
-        console.log(result + "\nRust Server Offline");
+        debug.log(result + "\nRust Server Offline");
       }
     }
   },
